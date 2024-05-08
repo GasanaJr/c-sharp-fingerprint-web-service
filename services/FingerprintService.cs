@@ -3,6 +3,9 @@ using libzkfpcsharp;  // Make sure this matches the namespace in the SDK
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Net.Http;
+using System.Text;
+using Newtonsoft.Json;
 
 
 
@@ -11,7 +14,7 @@ public class FingerprintService
     private static readonly object lockObject = new object();
     private IntPtr deviceHandle;
     private zkfp fingerprintDevice = new zkfp();
-     string base64Image = "";
+    public string base64Image = "";
 
     public int InitializeFingerprintSDK()
     {
@@ -43,7 +46,7 @@ public class FingerprintService
     }
 
 
-    public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte[] template, out int templateSize)
+public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte[] template, out int templateSize)
     {
         imgBuffer = new byte[300 * 400];
         template = new byte[2048];  // Assuming 2048 is sufficient for the template; adjust if necessary.
@@ -52,7 +55,7 @@ public class FingerprintService
 
         int result;
         int attempts = 0;
-        int maxAttempts =5;  // Set a reasonable limit to prevent infinite loops
+        int maxAttempts = 5;  // Set a reasonable limit to prevent infinite loops
 
         Console.WriteLine("Waiting for a clear fingerprint scan...");
         do
@@ -60,16 +63,13 @@ public class FingerprintService
             result = zkfp2.AcquireFingerprint(deviceHandle, imgBuffer, template, ref templateSize);
             if (result == zkfp.ZKFP_ERR_OK) {
                 Console.WriteLine("Fingerprint scan successful.");
-                SaveImage(imgBuffer, 300, 400, "C:\\Users\\USER\\FingerprintMiddleware\\fingerprint.bmp");
-                int resultImage = zkfp.Blob2Base64String(imgBuffer, imageSize, ref base64Image);
-                byte[]fingerBuffer = zkfp2.Base64ToBlob(base64Image);
-                SaveImageFromBlob(fingerBuffer, 300, 400, "C:\\Users\\USER\\FingerprintMiddleware\\fingerprint1.bmp");
+                string filePath = "C:\\Users\\USER\\FingerprintMiddleware\\fingerprint.bmp";
+                SaveImage(imgBuffer, 300, 400, filePath);
+                base64Image = ConvertImageToBase64(filePath);
                 return true;
             } else if (result == zkfp.ZKFP_ERR_CAPTURE) {
-                // This error might indicate the scan was not clear or no finger was detected
                 Console.WriteLine("No clear scan, retrying...");
             } else {
-                // Log unexpected errors and break the loop
                 Console.WriteLine($"Capture failed with error: {result}, stopping attempts.");
                 break;
             }
@@ -82,58 +82,41 @@ public class FingerprintService
         return false;
     }
 
-        public void SaveImage(byte[] imgBuffer, int width, int height, string filePath)
+    public void SaveImage(byte[] imgBuffer, int width, int height, string filePath)
     {
-        using (var bitmap = new Bitmap(width, height, PixelFormat.Format8bppIndexed))
+        using (var bmp = new Bitmap(width, height, PixelFormat.Format8bppIndexed))
         {
-            // Set palette to grayscale
-            ColorPalette palette = bitmap.Palette;
-            for (int i = 0; i < 256; i++)
-            {
+            // Set the palette to grayscale
+            ColorPalette palette = bmp.Palette;
+            for (int i = 0; i < 256; i++) // Create grayscale palette
                 palette.Entries[i] = Color.FromArgb(i, i, i);
-            }
-            bitmap.Palette = palette;
+            bmp.Palette = palette;
 
-            // Lock the bitmap's bits
-            BitmapData bitmapData = bitmap.LockBits(
-                new Rectangle(0, 0, bitmap.Width, bitmap.Height),
-                ImageLockMode.WriteOnly, bitmap.PixelFormat);
-
-            // Get the address of the first line
-            IntPtr ptr = bitmapData.Scan0;
-
-            // Copy the RGB values into the bitmap
-            System.Runtime.InteropServices.Marshal.Copy(imgBuffer, 0, ptr, imgBuffer.Length);
-
-            // Unlock the bits
-            bitmap.UnlockBits(bitmapData);
-
-            // Save the bitmap to file
-            bitmap.Save(filePath, ImageFormat.Bmp);
-            Console.WriteLine($"Image saved to {filePath}");
-        }
-    }
-
-        public void SaveImageFromBlob(byte[] imageBuffer, int width, int height, string filePath)
-    {
-        using (var bitmap = new Bitmap(width, height, PixelFormat.Format8bppIndexed))
-        {
-            ColorPalette ncp = bitmap.Palette;
-            for (int i = 0; i < 256; i++)
-                ncp.Entries[i] = Color.FromArgb(i, i, i);
-            bitmap.Palette = ncp;
-
-            BitmapData data = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
+            // Lock the bitmap's bits for editing
+            BitmapData bmpData = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed);
             
-            Marshal.Copy(imageBuffer, 0, data.Scan0, imageBuffer.Length);
-            bitmap.UnlockBits(data);
+            // Copy the raw image data into the bitmap
+            Marshal.Copy(imgBuffer, 0, bmpData.Scan0, imgBuffer.Length);
+            bmp.UnlockBits(bmpData);
 
-            bitmap.Save(filePath, ImageFormat.Bmp);
-            Console.WriteLine("Image saved to: " + filePath);
+            // Save the bitmap to a file
+            bmp.Save(filePath, ImageFormat.Bmp);
         }
+        Console.WriteLine("Image saved to: " + filePath);
     }
 
-
+        public string ConvertImageToBase64(string filePath)
+    {
+        using (Image image = Image.FromFile(filePath))
+        {
+            using (MemoryStream m = new MemoryStream())
+            {
+                image.Save(m, image.RawFormat);
+                byte[] imageBytes = m.ToArray();
+                return Convert.ToBase64String(imageBytes);
+            }
+        }
+    }
 
 
 
@@ -150,4 +133,40 @@ public class FingerprintService
             zkfp2.Terminate();
         }
     }
+
+        public async Task<bool> SendFingerprintDataAsync(string base64Fingerprint, string userId)
+    {
+        var httpClient = new HttpClient();
+        var url = "http://localhost:3000/fingerprint"; 
+        var payload = new
+        {
+            UserId = userId,
+            Fingerprint = base64Fingerprint
+        };
+
+        string jsonPayload = JsonConvert.SerializeObject(payload);
+        var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+        try
+        {
+            HttpResponseMessage response = await httpClient.PostAsync(url, content);
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("Data sent successfully.");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Failed to send data. Status code: " + response.StatusCode);
+                return false;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error sending data: " + ex.Message);
+            return false;
+        }
+    }
+
+    
 }

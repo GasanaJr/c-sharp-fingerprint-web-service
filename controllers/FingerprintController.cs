@@ -43,6 +43,7 @@ public class FingerprintController : ControllerBase
 
         if (_fingerprintService.WaitForClearScan(deviceHandle, out byte[] imgBuffer, out byte[] template, out int templateSize))
         {
+            Console.WriteLine(_fingerprintService.base64Image);
             return Ok("Clear fingerprint captured successfully");
         }
         else
