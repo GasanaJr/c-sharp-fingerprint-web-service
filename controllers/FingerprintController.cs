@@ -32,7 +32,7 @@ public class FingerprintController : ControllerBase
     }
 
     [HttpGet("capture")]
-    public ActionResult Capture()
+    public async Task<IActionResult> Capture()
     {
         IntPtr deviceHandle = _fingerprintService.GetCurrentDeviceHandle();
 
@@ -43,7 +43,8 @@ public class FingerprintController : ControllerBase
 
         if (_fingerprintService.WaitForClearScan(deviceHandle, out byte[] imgBuffer, out byte[] template, out int templateSize))
         {
-            Console.WriteLine(_fingerprintService.base64Image);
+            string base64Image = _fingerprintService.base64Image;
+            await _fingerprintService.SendFingerprintDataAsync(base64Image, "123");  
             return Ok("Clear fingerprint captured successfully");
         }
         else
@@ -51,6 +52,7 @@ public class FingerprintController : ControllerBase
             return BadRequest("Failed to capture clear fingerprint");
         }
     }
+
 
 
 

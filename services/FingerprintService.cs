@@ -140,8 +140,8 @@ public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte
         var url = "http://localhost:3000/fingerprint"; 
         var payload = new
         {
-            UserId = userId,
-            Fingerprint = base64Fingerprint
+            userId = userId,
+            fingerprintTemplate = base64Fingerprint
         };
 
         string jsonPayload = JsonConvert.SerializeObject(payload);
