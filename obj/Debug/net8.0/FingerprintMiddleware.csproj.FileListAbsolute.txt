@@ -32,3 +32,6 @@ C:\Users\USER\FingerprintMiddleware\obj\Debug\net8.0\refint\FingerprintMiddlewar
 C:\Users\USER\FingerprintMiddleware\obj\Debug\net8.0\FingerprintMiddleware.pdb
 C:\Users\USER\FingerprintMiddleware\obj\Debug\net8.0\FingerprintMiddleware.genruntimeconfig.cache
 C:\Users\USER\FingerprintMiddleware\obj\Debug\net8.0\ref\FingerprintMiddleware.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
