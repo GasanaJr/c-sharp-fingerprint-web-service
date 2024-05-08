@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Hn5WsJOk7BBfgRmCRYmgEghQBY8/kKwR0Wa+W9weYfI=",
+  "Source": "FingerprintMiddleware",
+  "BasePath": "_content/FingerprintMiddleware",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
