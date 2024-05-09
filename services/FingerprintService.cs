@@ -115,42 +115,33 @@ public class FingerprintService
 
 
 
-public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte[] template, out int templateSize)
+    public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte[] template, ref int templateSize)
     {
         imgBuffer = new byte[300 * 400];
-        template = new byte[2048];  // Assuming 2048 is sufficient for the template; adjust if necessary.
+        template = new byte[2048];
         templateSize = 2048;
-        int imageSize = imgBuffer.Length;
-
-        int result;
-        int attempts = 0;
-        int maxAttempts = 5;  // Set a reasonable limit to prevent infinite loops
+        int scansLeft = 3; 
 
         Console.WriteLine("Waiting for a clear fingerprint scan...");
-        do
+        for (int attempts = 0; attempts < 5; attempts++)
         {
-            result = zkfp2.AcquireFingerprint(deviceHandle, imgBuffer, template, ref templateSize);
+            int result = zkfp2.AcquireFingerprint(deviceHandle, imgBuffer, template, ref templateSize);
             if (result == zkfp.ZKFP_ERR_OK) {
-                Console.WriteLine("Fingerprint scan successful.");
-                string filePath = "C:\\Users\\USER\\FingerprintMiddleware\\fingerprint.bmp";
-                SaveImage(imgBuffer, 300, 400, filePath);
-                base64Image = ConvertImageToBase64(filePath);
-                AddUserTemplate(template);
+                Console.WriteLine($"Fingerprint scan successful.");
+                Thread.Sleep(2000);
                 return true;
             } else if (result == zkfp.ZKFP_ERR_CAPTURE) {
                 Console.WriteLine("No clear scan, retrying...");
+                Thread.Sleep(2000);  // Wait before retrying
             } else {
                 Console.WriteLine($"Capture failed with error: {result}, stopping attempts.");
                 break;
             }
-
-            attempts++;
-            Thread.Sleep(1000);  // Wait for half a second before retrying
-        } while (attempts < maxAttempts);
-
+        }
         Console.WriteLine("Failed to capture a clear fingerprint after several attempts.");
         return false;
     }
+
 
     public async Task<bool> WaitForClearScanToMatch(IntPtr deviceHandle, string userId)
     {
@@ -186,6 +177,43 @@ public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte
         Console.WriteLine("Failed to capture a clear fingerprint after several attempts.");
         return false;
     }
+
+        public async Task<(bool Success, byte[] MergedTemplate)> CaptureAndMergeFingerprints(IntPtr deviceHandle, string userId)
+    {
+        byte[] imgBuffer1, imgBuffer2, imgBuffer3;
+        byte[] template1 = new byte[2048];
+        byte[] template2 = new byte[2048];
+        byte[] template3 = new byte[2048];
+        int templateSize1 = 2048, templateSize2 = 2048, templateSize3 = 2048;
+        
+        bool success1 = WaitForClearScan(deviceHandle, out imgBuffer1, out template1, ref templateSize1);
+        bool success2 = WaitForClearScan(deviceHandle, out imgBuffer2, out template2, ref templateSize2);
+        bool success3 = WaitForClearScan(deviceHandle, out imgBuffer3, out template3, ref templateSize3);
+        
+        if (success1 && success2 && success3)
+        {
+            byte[] mergedTemplate = new byte[2048];
+            int mergedTemplateSize = 2048;
+            int result = zkfp2.DBMerge(dbHandle, template1, template2, template3, mergedTemplate, ref mergedTemplateSize);
+            if (result == zkfp.ZKFP_ERR_OK)
+            {
+                Console.WriteLine("Templates merged successfully.");
+                await AddFingerprintAsync(userId,mergedTemplate); 
+                return (true, mergedTemplate);
+            }
+            else
+            {
+                Console.WriteLine($"Failed to merge templates. Error code: {result}");
+                return (false,null);
+            }
+        }
+        else
+        {
+            Console.WriteLine("Failed to capture sufficient quality fingerprints for merging.");
+            return (false,null);
+        }
+    }
+
 
 
     
