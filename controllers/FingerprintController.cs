@@ -44,12 +44,28 @@ public class FingerprintController : ControllerBase
         if (_fingerprintService.WaitForClearScan(deviceHandle, out byte[] imgBuffer, out byte[] template, out int templateSize))
         {
             string base64Image = _fingerprintService.base64Image;
-            await _fingerprintService.SendFingerprintDataAsync(base64Image, "123");  
+            // await _fingerprintService.SendFingerprintDataAsync(base64Image, "123");  
             return Ok("Clear fingerprint captured successfully");
         }
         else
         {
             return BadRequest("Failed to capture clear fingerprint");
+        }
+    }
+
+    [HttpGet("match")]
+    public IActionResult Match()
+    {
+        IntPtr deviceHandle = _fingerprintService.GetCurrentDeviceHandle();
+
+        if (deviceHandle == IntPtr.Zero)
+        {
+            return BadRequest("Device not opened or handle is invalid.");
+        }
+        if(_fingerprintService.WaitForClearScanToMatch(deviceHandle, out byte[] imgBuffer, out byte[] template, out int templateSize)) {
+            return Ok("Matching Successful");
+        }else {
+            return BadRequest("Failed to match");
         }
     }
 

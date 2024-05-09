@@ -13,8 +13,10 @@ public class FingerprintService
 {
     private static readonly object lockObject = new object();
     private IntPtr deviceHandle;
+    public IntPtr  dbHandle = zkfp2.DBInit();
     private zkfp fingerprintDevice = new zkfp();
     public string base64Image = "";
+    private byte[] demoTemplate =  [];
 
     public int InitializeFingerprintSDK()
     {
@@ -66,6 +68,9 @@ public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte
                 string filePath = "C:\\Users\\USER\\FingerprintMiddleware\\fingerprint.bmp";
                 SaveImage(imgBuffer, 300, 400, filePath);
                 base64Image = ConvertImageToBase64(filePath);
+                demoTemplate = template;
+                int addResult = zkfp2.DBAdd(dbHandle, 1, template);
+                Console.WriteLine(addResult);
                 return true;
             } else if (result == zkfp.ZKFP_ERR_CAPTURE) {
                 Console.WriteLine("No clear scan, retrying...");
@@ -81,6 +86,43 @@ public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte
         Console.WriteLine("Failed to capture a clear fingerprint after several attempts.");
         return false;
     }
+
+    public bool WaitForClearScanToMatch(IntPtr deviceHandle, out byte[] imgBuffer, out byte[] template, out int templateSize)
+    {
+        imgBuffer = new byte[300 * 400];
+        template = new byte[2048];  // Assuming 2048 is sufficient for the template; adjust if necessary.
+        templateSize = 2048;
+        int imageSize = imgBuffer.Length;
+
+        int result;
+        int attempts = 0;
+        int maxAttempts = 5;  // Set a reasonable limit to prevent infinite loops
+
+        Console.WriteLine("Waiting for a clear fingerprint scan...");
+        do
+        {
+            result = zkfp2.AcquireFingerprint(deviceHandle, imgBuffer, template, ref templateSize);
+            if (result == zkfp.ZKFP_ERR_OK) {
+                Console.WriteLine("Fingerprint scan successful.");
+                int matchResult = zkfp2.DBMatch(dbHandle, demoTemplate, template);
+                Console.WriteLine(matchResult);
+                return true;
+            } else if (result == zkfp.ZKFP_ERR_CAPTURE) {
+                Console.WriteLine("No clear scan, retrying...");
+            } else {
+                Console.WriteLine($"Capture failed with error: {result}, stopping attempts.");
+                break;
+            }
+
+            attempts++;
+            Thread.Sleep(1000);  // Wait for half a second before retrying
+        } while (attempts < maxAttempts);
+
+        Console.WriteLine("Failed to capture a clear fingerprint after several attempts.");
+        return false;
+    }
+
+    
 
     public void SaveImage(byte[] imgBuffer, int width, int height, string filePath)
     {
@@ -137,7 +179,7 @@ public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte
         public async Task<bool> SendFingerprintDataAsync(string base64Fingerprint, string userId)
     {
         var httpClient = new HttpClient();
-        var url = "http://localhost:3000/fingerprint"; 
+        var url = "http://localhost:3000/match"; 
         var payload = new
         {
             userId = userId,
@@ -152,7 +194,7 @@ public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte
             HttpResponseMessage response = await httpClient.PostAsync(url, content);
             if (response.IsSuccessStatusCode)
             {
-                Console.WriteLine("Data sent successfully.");
+                Console.WriteLine("User Found.");
                 return true;
             }
             else
