@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 public class FingerprintController : ControllerBase
 {
     private readonly FingerprintService _fingerprintService;
-
+    
 
     public FingerprintController(FingerprintService fingerprintService)
     {
@@ -53,21 +53,19 @@ public class FingerprintController : ControllerBase
         }
     }
 
-    [HttpGet("match")]
-    public IActionResult Match()
+    [HttpPost("verify/{userId}")]
+    public async Task<IActionResult> VerifyFingerprint(string userId)
     {
-        IntPtr deviceHandle = _fingerprintService.GetCurrentDeviceHandle();
-
-        if (deviceHandle == IntPtr.Zero)
+        if (await _fingerprintService.WaitForClearScanToMatch(_fingerprintService.GetCurrentDeviceHandle(), userId))
         {
-            return BadRequest("Device not opened or handle is invalid.");
+            return Ok("Fingerprint matches the registered template.");
         }
-        if(_fingerprintService.WaitForClearScanToMatch(deviceHandle, out byte[] imgBuffer, out byte[] template, out int templateSize)) {
-            return Ok("Matching Successful");
-        }else {
-            return BadRequest("Failed to match");
+        else
+        {
+            return BadRequest("Fingerprint does not match the registered template.");
         }
     }
+
 
 
 
@@ -78,4 +76,33 @@ public class FingerprintController : ControllerBase
         _fingerprintService.CloseFingerprintDevice();
         return Ok("Device closed and SDK terminated");
     }
+
+    [HttpGet("getAllTemplates")]
+    public async Task<IActionResult> GetAllTemplates()
+    {
+        try
+        {
+            var templates = await _fingerprintService.GetAllFingerprintsAsync();
+            return Ok(templates);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ex.Message);
+        }
+    }
+
+    [HttpPost("register")]
+    public async Task<IActionResult> RegisterFingerprint([FromBody] FingerprintRequest request)
+    {
+        var scanResult = await _fingerprintService.WaitForClearScan(_fingerprintService.GetCurrentDeviceHandle(), request.UserId);
+        if (scanResult.Success)
+        {
+            return Ok("Fingerprint registered successfully.");
+        }
+        else
+        {
+            return BadRequest("Failed to register fingerprint.");
+        }
+    }
+
 }
