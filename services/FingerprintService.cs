@@ -18,6 +18,10 @@ public class FingerprintService
     public string base64Image = "";
     private byte[] demoTemplate =  [];
 
+    private Dictionary<int, byte[]> userTemplates = new Dictionary<int, byte[]>();
+    private int userIdCounter = 0;
+    private const int MATCH_THRESHOLD = 75;
+
     public int InitializeFingerprintSDK()
     {
         return zkfp2.Init();
@@ -47,6 +51,53 @@ public class FingerprintService
         return deviceHandle;  
     }
 
+        public int AddUserTemplate(byte[] template)
+    {
+        lock (userTemplates)
+        {
+            if (!Exists(template))
+            {
+                int newUserId = ++userIdCounter;  // Increment and get the new user ID
+                userTemplates.Add(newUserId, template);
+                zkfp2.DBAdd(dbHandle, newUserId, template);
+                Console.WriteLine("Template added to memory successfully");
+                return 0;  // Return the new user ID
+            }
+            return -1; // Template exists already, return an indicator
+        }
+    }
+
+        private bool Exists(byte[] candidateTemplate)
+    {
+        foreach (var entry in userTemplates)
+        {
+            int score = zkfp2.DBMatch(dbHandle, candidateTemplate, entry.Value);
+            if (score > MATCH_THRESHOLD)
+            {
+                Console.WriteLine($"Duplicate detected with score: {score}");
+                return true;
+            }
+        }
+        return false;
+    }
+
+        public int MatchTemplate(byte[] candidateTemplate)
+    {
+        int matchScore = 0;
+        lock (userTemplates)
+        {
+            foreach (var templatePair in userTemplates)
+            {
+                int score = zkfp2.DBMatch(dbHandle, candidateTemplate, templatePair.Value);
+                if (score > matchScore)
+                {
+                    matchScore = score;
+                }
+            }
+        }
+        return matchScore;
+    }
+
 
 public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte[] template, out int templateSize)
     {
@@ -68,9 +119,7 @@ public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte
                 string filePath = "C:\\Users\\USER\\FingerprintMiddleware\\fingerprint.bmp";
                 SaveImage(imgBuffer, 300, 400, filePath);
                 base64Image = ConvertImageToBase64(filePath);
-                demoTemplate = template;
-                int addResult = zkfp2.DBAdd(dbHandle, 1, template);
-                Console.WriteLine(addResult);
+                AddUserTemplate(template);
                 return true;
             } else if (result == zkfp.ZKFP_ERR_CAPTURE) {
                 Console.WriteLine("No clear scan, retrying...");
@@ -104,7 +153,7 @@ public bool WaitForClearScan(IntPtr deviceHandle, out byte[] imgBuffer, out byte
             result = zkfp2.AcquireFingerprint(deviceHandle, imgBuffer, template, ref templateSize);
             if (result == zkfp.ZKFP_ERR_OK) {
                 Console.WriteLine("Fingerprint scan successful.");
-                int matchResult = zkfp2.DBMatch(dbHandle, demoTemplate, template);
+                int matchResult = MatchTemplate(template);
                 Console.WriteLine(matchResult);
                 return true;
             } else if (result == zkfp.ZKFP_ERR_CAPTURE) {
