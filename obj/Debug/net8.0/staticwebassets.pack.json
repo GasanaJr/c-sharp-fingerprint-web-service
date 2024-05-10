@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\USER\\FingerprintMiddleware\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FingerprintMiddleware.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.FingerprintMiddleware.props",
+      "PackagePath": "build\\FingerprintMiddleware.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.FingerprintMiddleware.props",
+      "PackagePath": "buildMultiTargeting\\FingerprintMiddleware.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.FingerprintMiddleware.props",
+      "PackagePath": "buildTransitive\\FingerprintMiddleware.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
 using MongoDB.Driver;
+using Microsoft.AspNetCore.SignalR;
 
 
 public class FingerprintScanResult
@@ -32,13 +33,17 @@ public class FingerprintService
     private int userIdCounter = 0;
     private const int MATCH_THRESHOLD = 75;
 
+    private IHubContext<NotificationHub> _hubContext;
+    public int scansLeft = 3;
+
     // Constructor method
 
-    public FingerprintService(IConfiguration config)
+    public FingerprintService(IConfiguration config, IHubContext<NotificationHub> hubContext)
     {
         var client = new MongoClient(config.GetConnectionString("MongoDb"));
         var database = client.GetDatabase("FingerprintDb");
         _fingerprints = database.GetCollection<Fingerprint>("Fingerprints");
+        _hubContext =  hubContext;
     }
 
     public int InitializeFingerprintSDK()
@@ -106,6 +111,7 @@ public class FingerprintService
         if (storedTemplate == null)
         {
             Console.WriteLine("No template found for user ID.");
+            await _hubContext.Clients.All.SendAsync("ReceiveMessage","The Fingerprint does not exist in the database");
             return -1; // Indicate no match found because the user has no stored template
         }
         
@@ -120,14 +126,16 @@ public class FingerprintService
         imgBuffer = new byte[300 * 400];
         template = new byte[2048];
         templateSize = 2048;
-        int scansLeft = 3; 
+         
 
         Console.WriteLine("Waiting for a clear fingerprint scan...");
         for (int attempts = 0; attempts < 5; attempts++)
         {
             int result = zkfp2.AcquireFingerprint(deviceHandle, imgBuffer, template, ref templateSize);
             if (result == zkfp.ZKFP_ERR_OK) {
+                scansLeft--;
                 Console.WriteLine($"Fingerprint scan successful.");
+                _hubContext.Clients.All.SendAsync("ReceiveMessage", $"Fingerprint scan successful. {scansLeft} left");
                 Thread.Sleep(2000);
                 return true;
             } else if (result == zkfp.ZKFP_ERR_CAPTURE) {
@@ -135,6 +143,7 @@ public class FingerprintService
                 Thread.Sleep(2000);  // Wait before retrying
             } else {
                 Console.WriteLine($"Capture failed with error: {result}, stopping attempts.");
+                _hubContext.Clients.All.SendAsync("ReceiveMessage", "Fingerprint scan failed");
                 break;
             }
         }
@@ -160,7 +169,8 @@ public class FingerprintService
                 Console.WriteLine("Fingerprint scan successful.");
                 int matchResult = await MatchTemplate(template, userId);
                 Console.WriteLine($"Match result: {matchResult}");
-                return matchResult > MATCH_THRESHOLD; // Assume MATCH_THRESHOLD is a predefined constant
+                await _hubContext.Clients.All.SendAsync("ReceivedMessage", "The Fingerprints match");
+                return matchResult > MATCH_THRESHOLD; 
             }
             else if (result == zkfp.ZKFP_ERR_CAPTURE)
             {
@@ -199,6 +209,7 @@ public class FingerprintService
             {
                 Console.WriteLine("Templates merged successfully.");
                 await AddFingerprintAsync(userId,mergedTemplate); 
+                await _hubContext.Clients.All.SendAsync("ReceiveMessage", "Fingerprint scan successful");
                 return (true, mergedTemplate);
             }
             else

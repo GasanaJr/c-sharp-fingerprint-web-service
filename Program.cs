@@ -3,10 +3,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddControllers();  // Add support for controllers
+builder.Services.AddControllers();  
+builder.Services.AddSignalR();
 
 // Register FingerprintService as a Singleton to ensure a single instance across the application
-builder.Services.AddSingleton<FingerprintService>();  // Adjust the namespace as necessary
+builder.Services.AddSingleton<FingerprintService>();  
 
 var app = builder.Build();
 
@@ -22,6 +23,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();  // Ensure controllers are used
+
+app.MapHub<NotificationHub>("/notificationhub");
+
+app.UseStaticFiles(); 
+
 
 var summaries = new[]
 {
