@@ -1,0 +1,110 @@
+2024-05-11 13:16:48.750 +02:00 [INF] Failed to open fingerprint SDK.
+2024-05-11 13:16:48.862 +02:00 [INF] Now listening on: http://localhost:5212
+2024-05-11 13:16:48.864 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-11 13:16:48.866 +02:00 [INF] Hosting environment: Development
+2024-05-11 13:16:48.867 +02:00 [INF] Content root path: C:\Users\USER\FingerprintMiddleware
+2024-05-11 13:17:49.368 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5212/fingerprint/register - application/json 26
+2024-05-11 13:17:49.393 +02:00 [WRN] Failed to determine the https port for redirect.
+2024-05-11 13:17:49.398 +02:00 [INF] Executing endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 13:17:49.412 +02:00 [INF] Route matched with {action = "RegisterAndMergeFingerprints", controller = "Fingerprint"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterAndMergeFingerprints(FingerprintRequest) on controller FingerprintController (FingerprintMiddleware).
+2024-05-11 13:17:49.432 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2024-05-11 13:17:49.436 +02:00 [INF] Executed action FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware) in 19.457ms
+2024-05-11 13:17:49.439 +02:00 [INF] Executed endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 13:17:49.441 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5212/fingerprint/register - 400 null text/plain; charset=utf-8 73.9511ms
+2024-05-11 13:18:17.838 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5212/fingerprint/initialize - application/json 26
+2024-05-11 13:18:17.843 +02:00 [INF] Executing endpoint 'FingerprintController.Initialize (FingerprintMiddleware)'
+2024-05-11 13:18:17.846 +02:00 [INF] Route matched with {action = "Initialize", controller = "Fingerprint"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Initialize() on controller FingerprintController (FingerprintMiddleware).
+2024-05-11 13:18:17.848 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2024-05-11 13:18:17.849 +02:00 [INF] Executed action FingerprintController.Initialize (FingerprintMiddleware) in 1.4475ms
+2024-05-11 13:18:17.850 +02:00 [INF] Executed endpoint 'FingerprintController.Initialize (FingerprintMiddleware)'
+2024-05-11 13:18:17.851 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5212/fingerprint/initialize - 400 null text/plain; charset=utf-8 13.4459ms
+2024-05-11 13:18:49.825 +02:00 [INF] Application is shutting down...
+2024-05-11 13:18:57.040 +02:00 [INF] Failed to open fingerprint SDK.
+2024-05-11 13:18:57.146 +02:00 [INF] Now listening on: http://localhost:5212
+2024-05-11 13:18:57.149 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-11 13:18:57.149 +02:00 [INF] Hosting environment: Development
+2024-05-11 13:18:57.150 +02:00 [INF] Content root path: C:\Users\USER\FingerprintMiddleware
+2024-05-11 13:20:20.192 +02:00 [INF] Application is shutting down...
+2024-05-11 13:20:25.833 +02:00 [INF] Failed to initialize fingerprint SDK.
+2024-05-11 13:20:26.023 +02:00 [INF] Now listening on: http://localhost:5212
+2024-05-11 13:20:26.027 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-11 13:20:26.029 +02:00 [INF] Hosting environment: Development
+2024-05-11 13:20:26.030 +02:00 [INF] Content root path: C:\Users\USER\FingerprintMiddleware
+2024-05-11 13:21:54.110 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5212/index.html - null null
+2024-05-11 13:21:54.141 +02:00 [WRN] Failed to determine the https port for redirect.
+2024-05-11 13:21:54.150 +02:00 [INF] The file /index.html was not modified
+2024-05-11 13:21:54.154 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5212/index.html - 304 null text/html 43.8918ms
+2024-05-11 13:21:54.313 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5212/notificationhub/negotiate?negotiateVersion=1 - text/plain;charset=UTF-8 0
+2024-05-11 13:21:54.326 +02:00 [INF] Executing endpoint '/notificationhub/negotiate'
+2024-05-11 13:21:54.338 +02:00 [INF] Executed endpoint '/notificationhub/negotiate'
+2024-05-11 13:21:54.340 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5212/notificationhub/negotiate?negotiateVersion=1 - 200 316 application/json 26.6764ms
+2024-05-11 13:21:54.812 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5212/notificationhub?id=xDzEnbLI268AmqyaGwfAHg - null null
+2024-05-11 13:21:54.818 +02:00 [INF] Executing endpoint '/notificationhub'
+2024-05-11 13:24:27.516 +02:00 [INF] Application is shutting down...
+2024-05-11 13:24:27.542 +02:00 [INF] Executed endpoint '/notificationhub'
+2024-05-11 13:24:27.548 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5212/notificationhub?id=xDzEnbLI268AmqyaGwfAHg - 101 null null 152735.7846ms
+2024-05-11 13:24:46.154 +02:00 [INF] Fingerprint SDK initialized successfully.
+2024-05-11 13:24:46.180 +02:00 [INF] Failed to open fingerprint device.
+2024-05-11 13:24:46.269 +02:00 [INF] Now listening on: http://localhost:5212
+2024-05-11 13:24:46.271 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-11 13:24:46.271 +02:00 [INF] Hosting environment: Development
+2024-05-11 13:24:46.272 +02:00 [INF] Content root path: C:\Users\USER\FingerprintMiddleware
+2024-05-11 13:25:12.166 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5212/fingerprint/open - application/json 26
+2024-05-11 13:25:12.190 +02:00 [WRN] Failed to determine the https port for redirect.
+2024-05-11 13:25:12.194 +02:00 [INF] Executing endpoint 'FingerprintController.OpenDevice (FingerprintMiddleware)'
+2024-05-11 13:25:12.202 +02:00 [INF] Route matched with {action = "OpenDevice", controller = "Fingerprint"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult OpenDevice() on controller FingerprintController (FingerprintMiddleware).
+2024-05-11 13:25:12.209 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2024-05-11 13:25:12.213 +02:00 [INF] Executed action FingerprintController.OpenDevice (FingerprintMiddleware) in 7.4007ms
+2024-05-11 13:25:12.215 +02:00 [INF] Executed endpoint 'FingerprintController.OpenDevice (FingerprintMiddleware)'
+2024-05-11 13:25:12.217 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5212/fingerprint/open - 400 null text/plain; charset=utf-8 52.5502ms
+2024-05-11 13:26:11.607 +02:00 [INF] Application is shutting down...
+2024-05-11 13:28:23.219 +02:00 [INF] Fingerprint SDK initialization result: 0
+2024-05-11 13:28:23.249 +02:00 [INF] Failed to open fingerprint device.
+2024-05-11 13:28:23.349 +02:00 [INF] Now listening on: http://localhost:5212
+2024-05-11 13:28:23.352 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-11 13:28:23.353 +02:00 [INF] Hosting environment: Development
+2024-05-11 13:28:23.354 +02:00 [INF] Content root path: C:\Users\USER\FingerprintMiddleware
+2024-05-11 13:28:49.598 +02:00 [INF] Application is shutting down...
+2024-05-11 13:28:54.097 +02:00 [INF] Fingerprint SDK initialization result: 0
+2024-05-11 13:28:55.433 +02:00 [INF] Fingerprint device opened successfully, Handle: 3053956191520
+2024-05-11 13:28:55.531 +02:00 [INF] Now listening on: http://localhost:5212
+2024-05-11 13:28:55.534 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-11 13:28:55.534 +02:00 [INF] Hosting environment: Development
+2024-05-11 13:28:55.535 +02:00 [INF] Content root path: C:\Users\USER\FingerprintMiddleware
+2024-05-11 13:30:47.639 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5212/fingerprint/register - application/json 26
+2024-05-11 13:31:32.535 +02:00 [WRN] Failed to determine the https port for redirect.
+2024-05-11 13:31:32.537 +02:00 [INF] Executing endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 13:31:32.551 +02:00 [INF] Route matched with {action = "RegisterAndMergeFingerprints", controller = "Fingerprint"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterAndMergeFingerprints(FingerprintRequest) on controller FingerprintController (FingerprintMiddleware).
+2024-05-11 13:31:32.565 +02:00 [INF] Executed action FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware) in 10.8624ms
+2024-05-11 13:31:32.568 +02:00 [INF] Executed endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 13:31:32.570 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5212/fingerprint/register - 499 null null 44933.4421ms
+2024-05-11 13:31:32.653 +02:00 [INF] Application is shutting down...
+2024-05-11 13:31:48.189 +02:00 [INF] Fingerprint SDK initialization result: 0
+2024-05-11 13:31:49.517 +02:00 [INF] Fingerprint device opened successfully, Handle: 2404546663952
+2024-05-11 13:31:49.616 +02:00 [INF] Now listening on: http://localhost:5212
+2024-05-11 13:31:49.619 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-11 13:31:49.620 +02:00 [INF] Hosting environment: Development
+2024-05-11 13:31:49.620 +02:00 [INF] Content root path: C:\Users\USER\FingerprintMiddleware
+2024-05-11 13:31:56.386 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5212/fingerprint/register - application/json 26
+2024-05-11 13:31:56.408 +02:00 [WRN] Failed to determine the https port for redirect.
+2024-05-11 13:31:56.411 +02:00 [INF] Executing endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 13:31:56.422 +02:00 [INF] Route matched with {action = "RegisterAndMergeFingerprints", controller = "Fingerprint"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterAndMergeFingerprints(FingerprintRequest) on controller FingerprintController (FingerprintMiddleware).
+2024-05-11 13:32:15.757 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Byte[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-05-11 13:32:15.764 +02:00 [INF] Executed action FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware) in 19338.1476ms
+2024-05-11 13:32:15.773 +02:00 [INF] Executed endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 13:32:15.779 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5212/fingerprint/register - 200 null application/json; charset=utf-8 19392.78ms
+2024-05-11 13:32:25.656 +02:00 [INF] Application is shutting down...
+2024-05-11 13:35:21.987 +02:00 [INF] Fingerprint SDK initialization result: 0
+2024-05-11 13:35:23.325 +02:00 [INF] Fingerprint device opened successfully, Handle: 2795042133184
+2024-05-11 13:35:23.362 +02:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-05-11 13:35:23.398 +02:00 [DBG] Registered SignalR Protocol: json, implemented by Microsoft.AspNetCore.SignalR.Protocol.JsonHubProtocol.
+2024-05-11 13:35:23.418 +02:00 [DBG] Hosting starting
+2024-05-11 13:35:23.458 +02:00 [INF] Now listening on: http://localhost:5212
+2024-05-11 13:35:23.460 +02:00 [DBG] Loaded hosting startup assembly FingerprintMiddleware
+2024-05-11 13:35:23.462 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-11 13:35:23.463 +02:00 [INF] Hosting environment: Development
+2024-05-11 13:35:23.465 +02:00 [INF] Content root path: C:\Users\USER\FingerprintMiddleware
+2024-05-11 13:35:23.467 +02:00 [DBG] Hosting started
+2024-05-11 13:35:53.842 +02:00 [INF] Application is shutting down...
+2024-05-11 13:35:53.843 +02:00 [DBG] Hosting stopping
+2024-05-11 13:35:53.862 +02:00 [DBG] Hosting stopped

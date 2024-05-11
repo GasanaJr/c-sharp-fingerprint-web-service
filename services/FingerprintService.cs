@@ -24,6 +24,8 @@ public class FingerprintService
     private static readonly object lockObject = new object();
 
     private readonly IMongoCollection<Fingerprint> _fingerprints;
+
+    private readonly ILogger<FingerprintService>_logger;
     private IntPtr deviceHandle;
     public IntPtr  dbHandle = zkfp2.DBInit();
     private zkfp fingerprintDevice = new zkfp();
@@ -38,10 +40,11 @@ public class FingerprintService
 
     // Constructor method
 
-    public FingerprintService(IConfiguration config, IHubContext<NotificationHub> hubContext)
+    public FingerprintService(IConfiguration config, ILogger<FingerprintService> logger, IHubContext<NotificationHub> hubContext)
     {
         var client = new MongoClient(config.GetConnectionString("MongoDb"));
         var database = client.GetDatabase("FingerprintDb");
+        _logger = logger;
         _fingerprints = database.GetCollection<Fingerprint>("Fingerprints");
         _hubContext =  hubContext;
     }
@@ -68,6 +71,36 @@ public class FingerprintService
             return deviceHandle;
         }
     }
+
+    public void Initialize()
+    {
+        int initResult = InitializeFingerprintSDK();
+        Console.WriteLine(initResult);
+        _logger.LogInformation($"Fingerprint SDK initialization result: {initResult}");
+
+        if (initResult != zkfp.ZKFP_ERR_OK)
+        {
+            Console.WriteLine("Failed to initialize fingerprint SDK.");
+            _logger.LogInformation("Failed to initialize fingerprint SDK.");
+        }
+        else
+        {
+            IntPtr deviceHandle = OpenFingerprintDevice();
+            if (deviceHandle != IntPtr.Zero)
+            {
+                Console.WriteLine($"Fingerprint device opened successfully, Handle: {deviceHandle}");
+                _logger.LogInformation($"Fingerprint device opened successfully, Handle: {deviceHandle}");
+            }
+            else
+            {
+                Console.WriteLine("Failed to open fingerprint device.");
+                _logger.LogInformation("Failed to open fingerprint device.");
+            }
+        }
+    }
+
+
+
 
 
         public IntPtr GetCurrentDeviceHandle()
@@ -210,6 +243,7 @@ public class FingerprintService
                 Console.WriteLine("Templates merged successfully.");
                 await AddFingerprintAsync(userId,mergedTemplate); 
                 await _hubContext.Clients.All.SendAsync("ReceiveMessage", "Fingerprint scan successful");
+                
                 return (true, mergedTemplate);
             }
             else

@@ -1,0 +1,14 @@
+2024-05-11 13:35:21.987 +02:00 [INF] Fingerprint SDK initialization result: 0
+2024-05-11 13:35:23.325 +02:00 [INF] Fingerprint device opened successfully, Handle: 2795042133184
+2024-05-11 13:35:23.362 +02:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-05-11 13:35:23.398 +02:00 [DBG] Registered SignalR Protocol: json, implemented by Microsoft.AspNetCore.SignalR.Protocol.JsonHubProtocol.
+2024-05-11 13:35:23.418 +02:00 [DBG] Hosting starting
+2024-05-11 13:35:23.458 +02:00 [INF] Now listening on: http://localhost:5212
+2024-05-11 13:35:23.460 +02:00 [DBG] Loaded hosting startup assembly FingerprintMiddleware
+2024-05-11 13:35:23.462 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-11 13:35:23.463 +02:00 [INF] Hosting environment: Development
+2024-05-11 13:35:23.465 +02:00 [INF] Content root path: C:\Users\USER\FingerprintMiddleware
+2024-05-11 13:35:23.467 +02:00 [DBG] Hosting started
+2024-05-11 13:35:53.842 +02:00 [INF] Application is shutting down...
+2024-05-11 13:35:53.843 +02:00 [DBG] Hosting stopping
+2024-05-11 13:35:53.862 +02:00 [DBG] Hosting stopped

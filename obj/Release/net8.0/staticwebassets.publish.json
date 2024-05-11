@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "eNp74QSVTbuXNsrvf+C+vqCgjSgG/PprZscXUTvE//M=",
+  "Source": "FingerprintMiddleware",
+  "BasePath": "_content/FingerprintMiddleware",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "FingerprintMiddleware\\wwwroot",
+      "Source": "FingerprintMiddleware",
+      "ContentRoot": "C:\\Users\\USER\\FingerprintMiddleware\\wwwroot\\",
+      "BasePath": "_content/FingerprintMiddleware",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\USER\\FingerprintMiddleware\\wwwroot\\index.html",
+      "SourceId": "FingerprintMiddleware",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\USER\\FingerprintMiddleware\\wwwroot\\",
+      "BasePath": "_content/FingerprintMiddleware",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
+}

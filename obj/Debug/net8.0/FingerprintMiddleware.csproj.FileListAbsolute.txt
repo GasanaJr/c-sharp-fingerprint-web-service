@@ -52,3 +52,16 @@ C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\runtimes\osx\native\libmong
 C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\runtimes\win\native\mongocrypt.dll
 C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
 C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\FingerprintMiddleware.staticwebassets.runtime.json
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\Microsoft.Extensions.Hosting.WindowsServices.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\System.ServiceProcess.ServiceController.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.ServiceProcess.ServiceController.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\Serilog.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\Serilog.AspNetCore.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+C:\Users\USER\FingerprintMiddleware\bin\Debug\net8.0\Serilog.Sinks.File.dll

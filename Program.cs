@@ -1,4 +1,7 @@
+using Serilog;
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseWindowsService();
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
@@ -6,10 +9,25 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();  
 builder.Services.AddSignalR();
 
+var logPath = Path.Combine(AppContext.BaseDirectory, "logs");
+if (!Directory.Exists(logPath))
+{
+    Directory.CreateDirectory(logPath);
+}
+
+// Continue with setting up logging or other startup tasks
+
+
+builder.Host.UseSerilog((hostingContext,services,loggerConfiguration) => {
+    loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration).WriteTo.Console().WriteTo.File("logs/myapp.txt", rollingInterval: RollingInterval.Day);
+});
+
 // Register FingerprintService as a Singleton to ensure a single instance across the application
 builder.Services.AddSingleton<FingerprintService>();  
 
 var app = builder.Build();
+var fingerprintService = app.Services.GetRequiredService<FingerprintService>();
+fingerprintService.Initialize();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
