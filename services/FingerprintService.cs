@@ -124,6 +124,7 @@ public class FingerprintService
         }
     }
 
+
         private bool Exists(byte[] candidateTemplate)
     {
         foreach (var entry in userTemplates)
@@ -132,6 +133,23 @@ public class FingerprintService
             if (score > MATCH_THRESHOLD)
             {
                 Console.WriteLine($"Duplicate detected with score: {score}");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Matching against templates from the database
+    private async Task<bool> ExistsFromDB(byte[] candidateTemplate)
+    {
+        var templates = await GetAllFingerprintsAsync();
+        foreach(var template in templates)
+        {
+            int score = zkfp2.DBMatch(dbHandle, candidateTemplate, template);
+            if (score > MATCH_THRESHOLD)
+            {
+                Console.WriteLine($"Duplicate detected with score: {score}");
+                await _hubContext.Clients.All.SendAsync("ReceiveMessage", "The Person already exists in the database");
                 return true;
             }
         }
@@ -238,11 +256,13 @@ public class FingerprintService
             byte[] mergedTemplate = new byte[2048];
             int mergedTemplateSize = 2048;
             int result = zkfp2.DBMerge(dbHandle, template1, template2, template3, mergedTemplate, ref mergedTemplateSize);
+            await ExistsFromDB(mergedTemplate);
             if (result == zkfp.ZKFP_ERR_OK)
             {
                 Console.WriteLine("Templates merged successfully.");
                 await AddFingerprintAsync(userId,mergedTemplate); 
                 await _hubContext.Clients.All.SendAsync("ReceiveMessage", "Fingerprint scan successful");
+                scansLeft = 3;
                 
                 return (true, mergedTemplate);
             }
