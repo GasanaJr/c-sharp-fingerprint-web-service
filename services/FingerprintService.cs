@@ -419,6 +419,46 @@ public class FingerprintService
         return fingerprint?.Template;
     }
 
+    public async Task<int> sendFingerPrint(IntPtr deviceHandle, byte[][] fingerprints)
+    {
+        byte[] imgBuffer = new byte[300 * 400];
+        byte[] template = new byte[2048];
+        int templateSize = 2048;
+        int attempts = 0;
+        const int maxAttempts = 5;
+        int matchScore = 0;
 
+        Console.WriteLine("Waiting for a clear fingerprint scan...");
+        while (attempts < maxAttempts)
+        {
+            int result = zkfp2.AcquireFingerprint(deviceHandle, imgBuffer, template, ref templateSize);
+            if (result == zkfp.ZKFP_ERR_OK)
+            {
+                foreach (byte[] fingerprint in fingerprints)
+                {
+                    matchScore = zkfp2.DBMatch(dbHandle, template, fingerprint);
+                    if (matchScore >= MATCH_THRESHOLD)
+                    {
+                        break;
+                    }
+                }
+                Console.WriteLine("Fingerprint scan successful. Sending it now...");
+                return matchScore;
+            }
+            else if (result == zkfp.ZKFP_ERR_CAPTURE)
+            {
+                Console.WriteLine("No clear scan, retrying...");
+            }
+            else
+            {
+                Console.WriteLine($"Capture failed with error: {result}, stopping attempts.");
+                break;
+            }
+            attempts++;
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine("Failed to capture a clear fingerprint after several attempts.");
+        return 0;
+    }
     
 }

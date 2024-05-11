@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\FingerprintMiddleware\\FingerprintMiddleware.csproj": {}
+    "/Users/lupin/Desktop/c-sharp-fingerprint-web-service/FingerprintMiddleware.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\FingerprintMiddleware\\FingerprintMiddleware.csproj": {
+    "/Users/lupin/Desktop/c-sharp-fingerprint-web-service/FingerprintMiddleware.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\FingerprintMiddleware\\FingerprintMiddleware.csproj",
+        "projectUniqueName": "/Users/lupin/Desktop/c-sharp-fingerprint-web-service/FingerprintMiddleware.csproj",
         "projectName": "FingerprintMiddleware",
-        "projectPath": "C:\\Users\\USER\\FingerprintMiddleware\\FingerprintMiddleware.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\FingerprintMiddleware\\obj\\",
+        "projectPath": "/Users/lupin/Desktop/c-sharp-fingerprint-web-service/FingerprintMiddleware.csproj",
+        "packagesPath": "/Users/lupin/.nuget/packages/",
+        "outputPath": "/Users/lupin/Desktop/c-sharp-fingerprint-web-service/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/lupin/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -103,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
