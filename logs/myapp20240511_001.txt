@@ -13,3 +13,195 @@
 2024-05-11 13:35:53.843 +02:00 [DBG] Hosting stopping
 2024-05-11 13:35:53.862 +02:00 [DBG] Hosting stopped
 2024-05-11 14:58:53.678 +02:00 [INF] Fingerprint SDK initialization result: 0
+2024-05-11 14:58:54.994 +02:00 [INF] Fingerprint device opened successfully, Handle: 2829247010272
+2024-05-11 14:58:55.021 +02:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-05-11 14:58:55.063 +02:00 [DBG] Registered SignalR Protocol: json, implemented by Microsoft.AspNetCore.SignalR.Protocol.JsonHubProtocol.
+2024-05-11 14:58:55.084 +02:00 [DBG] Hosting starting
+2024-05-11 14:58:55.135 +02:00 [INF] Now listening on: http://localhost:5212
+2024-05-11 14:58:55.140 +02:00 [DBG] Loaded hosting startup assembly FingerprintMiddleware
+2024-05-11 14:58:55.144 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-11 14:58:55.150 +02:00 [INF] Hosting environment: Development
+2024-05-11 14:58:55.152 +02:00 [INF] Content root path: C:\Users\USER\FingerprintMiddleware
+2024-05-11 14:58:55.155 +02:00 [DBG] Hosting started
+2024-05-11 14:59:31.689 +02:00 [DBG] Connection id "0HN3HN8PJEP6G" received FIN.
+2024-05-11 14:59:31.701 +02:00 [DBG] Connection id "0HN3HN8PJEP6G" accepted.
+2024-05-11 14:59:31.710 +02:00 [DBG] Connection id "0HN3HN8PJEP6G" started.
+2024-05-11 14:59:31.715 +02:00 [DBG] Connection id "0HN3HN8PJEP6H" accepted.
+2024-05-11 14:59:31.737 +02:00 [DBG] Connection id "0HN3HN8PJEP6H" started.
+2024-05-11 14:59:31.737 +02:00 [DBG] Connection id "0HN3HN8PJEP6G" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-05-11 14:59:31.757 +02:00 [DBG] Connection id "0HN3HN8PJEP6G" disconnecting.
+2024-05-11 14:59:31.769 +02:00 [DBG] Connection id "0HN3HN8PJEP6G" stopped.
+2024-05-11 14:59:31.784 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5212/fingerprint/register - application/json 26
+2024-05-11 14:59:31.808 +02:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-05-11 14:59:31.834 +02:00 [DBG] 1 candidate(s) found for the request path '/fingerprint/register'
+2024-05-11 14:59:31.846 +02:00 [DBG] Endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)' with route pattern 'Fingerprint/register' is valid for the request path '/fingerprint/register'
+2024-05-11 14:59:31.863 +02:00 [DBG] Request matched endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 14:59:31.891 +02:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-05-11 14:59:31.898 +02:00 [WRN] Failed to determine the https port for redirect.
+2024-05-11 14:59:31.908 +02:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-05-11 14:59:31.916 +02:00 [INF] Executing endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 14:59:31.949 +02:00 [INF] Route matched with {action = "RegisterAndMergeFingerprints", controller = "Fingerprint"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterAndMergeFingerprints(FingerprintRequest) on controller FingerprintController (FingerprintMiddleware).
+2024-05-11 14:59:31.967 +02:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-05-11 14:59:31.981 +02:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-05-11 14:59:31.996 +02:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-05-11 14:59:32.016 +02:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-05-11 14:59:32.032 +02:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-05-11 14:59:32.047 +02:00 [DBG] Executing controller factory for controller FingerprintController (FingerprintMiddleware)
+2024-05-11 14:59:32.061 +02:00 [DBG] Executed controller factory for controller FingerprintController (FingerprintMiddleware)
+2024-05-11 14:59:32.076 +02:00 [DBG] Attempting to bind parameter 'request' of type 'FingerprintRequest' ...
+2024-05-11 14:59:32.090 +02:00 [DBG] Attempting to bind parameter 'request' of type 'FingerprintRequest' using the name '' in request data ...
+2024-05-11 14:59:32.104 +02:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-05-11 14:59:32.124 +02:00 [DBG] Connection id "0HN3HN8PJEP6H", Request id "0HN3HN8PJEP6H:00000001": started reading request body.
+2024-05-11 14:59:32.136 +02:00 [DBG] Connection id "0HN3HN8PJEP6H", Request id "0HN3HN8PJEP6H:00000001": done reading request body.
+2024-05-11 14:59:32.152 +02:00 [DBG] JSON input formatter succeeded, deserializing to type 'FingerprintRequest'
+2024-05-11 14:59:32.162 +02:00 [DBG] Done attempting to bind parameter 'request' of type 'FingerprintRequest'.
+2024-05-11 14:59:32.177 +02:00 [DBG] Done attempting to bind parameter 'request' of type 'FingerprintRequest'.
+2024-05-11 14:59:32.189 +02:00 [DBG] Attempting to validate the bound parameter 'request' of type 'FingerprintRequest' ...
+2024-05-11 14:59:32.217 +02:00 [DBG] Done attempting to validate the bound parameter 'request' of type 'FingerprintRequest'.
+2024-05-11 14:59:52.550 +02:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-05-11 14:59:52.582 +02:00 [DBG] No information found on request to perform content negotiation.
+2024-05-11 14:59:52.593 +02:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-05-11 14:59:52.609 +02:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-05-11 14:59:52.621 +02:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain' to write the response.
+2024-05-11 14:59:52.636 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2024-05-11 14:59:52.662 +02:00 [INF] Executed action FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware) in 20610.7778ms
+2024-05-11 14:59:52.681 +02:00 [INF] Executed endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 14:59:52.695 +02:00 [DBG] Connection id "0HN3HN8PJEP6H" completed keep alive response.
+2024-05-11 14:59:52.711 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5212/fingerprint/register - 400 null text/plain; charset=utf-8 20927.3446ms
+2024-05-11 15:00:03.364 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5212/fingerprint/register - application/json 26
+2024-05-11 15:00:03.374 +02:00 [DBG] 1 candidate(s) found for the request path '/fingerprint/register'
+2024-05-11 15:00:03.381 +02:00 [DBG] Endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)' with route pattern 'Fingerprint/register' is valid for the request path '/fingerprint/register'
+2024-05-11 15:00:03.385 +02:00 [DBG] Request matched endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 15:00:03.388 +02:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-05-11 15:00:03.390 +02:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-05-11 15:00:03.391 +02:00 [INF] Executing endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 15:00:03.397 +02:00 [INF] Route matched with {action = "RegisterAndMergeFingerprints", controller = "Fingerprint"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterAndMergeFingerprints(FingerprintRequest) on controller FingerprintController (FingerprintMiddleware).
+2024-05-11 15:00:03.401 +02:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-05-11 15:00:03.407 +02:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-05-11 15:00:03.411 +02:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-05-11 15:00:03.420 +02:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-05-11 15:00:03.430 +02:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-05-11 15:00:03.439 +02:00 [DBG] Executing controller factory for controller FingerprintController (FingerprintMiddleware)
+2024-05-11 15:00:03.445 +02:00 [DBG] Executed controller factory for controller FingerprintController (FingerprintMiddleware)
+2024-05-11 15:00:03.449 +02:00 [DBG] Attempting to bind parameter 'request' of type 'FingerprintRequest' ...
+2024-05-11 15:00:03.450 +02:00 [DBG] Attempting to bind parameter 'request' of type 'FingerprintRequest' using the name '' in request data ...
+2024-05-11 15:00:03.452 +02:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-05-11 15:00:03.454 +02:00 [DBG] Connection id "0HN3HN8PJEP6H", Request id "0HN3HN8PJEP6H:00000002": started reading request body.
+2024-05-11 15:00:03.454 +02:00 [DBG] Connection id "0HN3HN8PJEP6H", Request id "0HN3HN8PJEP6H:00000002": done reading request body.
+2024-05-11 15:00:03.455 +02:00 [DBG] JSON input formatter succeeded, deserializing to type 'FingerprintRequest'
+2024-05-11 15:00:03.456 +02:00 [DBG] Done attempting to bind parameter 'request' of type 'FingerprintRequest'.
+2024-05-11 15:00:03.457 +02:00 [DBG] Done attempting to bind parameter 'request' of type 'FingerprintRequest'.
+2024-05-11 15:00:03.458 +02:00 [DBG] Attempting to validate the bound parameter 'request' of type 'FingerprintRequest' ...
+2024-05-11 15:00:03.459 +02:00 [DBG] Done attempting to validate the bound parameter 'request' of type 'FingerprintRequest'.
+2024-05-11 15:00:23.496 +02:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-05-11 15:00:23.521 +02:00 [DBG] No information found on request to perform content negotiation.
+2024-05-11 15:00:23.528 +02:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-05-11 15:00:23.541 +02:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-05-11 15:00:23.552 +02:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-05-11 15:00:23.569 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Byte[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-05-11 15:00:23.591 +02:00 [INF] Executed action FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware) in 20152.1946ms
+2024-05-11 15:00:23.615 +02:00 [INF] Executed endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 15:00:23.633 +02:00 [DBG] Connection id "0HN3HN8PJEP6H" completed keep alive response.
+2024-05-11 15:00:23.647 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5212/fingerprint/register - 200 null application/json; charset=utf-8 20283.1062ms
+2024-05-11 15:00:52.521 +02:00 [DBG] Connection id "0HN3HN8PJEP6I" accepted.
+2024-05-11 15:00:52.531 +02:00 [DBG] Connection id "0HN3HN8PJEP6I" started.
+2024-05-11 15:00:52.532 +02:00 [DBG] Connection id "0HN3HN8PJEP6J" accepted.
+2024-05-11 15:00:52.534 +02:00 [DBG] Connection id "0HN3HN8PJEP6J" started.
+2024-05-11 15:00:52.535 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5212/index.html - null null
+2024-05-11 15:00:52.538 +02:00 [DBG] No candidates found for the request path '/index.html'
+2024-05-11 15:00:52.540 +02:00 [DBG] Request did not match any endpoints
+2024-05-11 15:00:52.547 +02:00 [DBG] The request path  does not match the path filter
+2024-05-11 15:00:52.558 +02:00 [INF] Sending file. Request path: '/index.html'. Physical path: 'C:\Users\USER\FingerprintMiddleware\wwwroot\index.html'
+2024-05-11 15:00:52.564 +02:00 [DBG] Connection id "0HN3HN8PJEP6I" completed keep alive response.
+2024-05-11 15:00:52.569 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5212/index.html - 200 915 text/html 33.8275ms
+2024-05-11 15:00:52.701 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5212/notificationhub/negotiate?negotiateVersion=1 - text/plain;charset=UTF-8 0
+2024-05-11 15:00:52.710 +02:00 [DBG] 1 candidate(s) found for the request path '/notificationhub/negotiate'
+2024-05-11 15:00:52.712 +02:00 [DBG] Request matched endpoint '/notificationhub/negotiate'
+2024-05-11 15:00:52.713 +02:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-05-11 15:00:52.715 +02:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-05-11 15:00:52.718 +02:00 [INF] Executing endpoint '/notificationhub/negotiate'
+2024-05-11 15:00:52.723 +02:00 [DBG] New connection FXLxY9JN4kT_Um5OcTnu9w created.
+2024-05-11 15:00:52.727 +02:00 [DBG] Sending negotiation response.
+2024-05-11 15:00:52.731 +02:00 [INF] Executed endpoint '/notificationhub/negotiate'
+2024-05-11 15:00:52.734 +02:00 [DBG] Connection id "0HN3HN8PJEP6I" completed keep alive response.
+2024-05-11 15:00:52.735 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5212/notificationhub/negotiate?negotiateVersion=1 - 200 316 application/json 34.8355ms
+2024-05-11 15:00:53.200 +02:00 [DBG] Connection id "0HN3HN8PJEP6K" accepted.
+2024-05-11 15:00:53.203 +02:00 [DBG] Connection id "0HN3HN8PJEP6K" started.
+2024-05-11 15:00:53.206 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5212/notificationhub?id=SS9TtkV7DNgJy5bhUxHMaw - null null
+2024-05-11 15:00:53.215 +02:00 [DBG] 1 candidate(s) found for the request path '/notificationhub'
+2024-05-11 15:00:53.219 +02:00 [DBG] Request matched endpoint '/notificationhub'
+2024-05-11 15:00:53.222 +02:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-05-11 15:00:53.226 +02:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-05-11 15:00:53.228 +02:00 [INF] Executing endpoint '/notificationhub'
+2024-05-11 15:00:53.234 +02:00 [DBG] Establishing new connection.
+2024-05-11 15:00:53.240 +02:00 [DBG] OnConnectedAsync started.
+2024-05-11 15:00:53.243 +02:00 [DBG] Socket opened using Sub-Protocol: 'null'.
+2024-05-11 15:00:53.293 +02:00 [DBG] Found protocol implementation for requested protocol: json.
+2024-05-11 15:00:53.300 +02:00 [DBG] Completed connection handshake. Using HubProtocol 'json'.
+2024-05-11 15:00:58.954 +02:00 [DBG] Connection id "0HN3HN8PJEP6J" received FIN.
+2024-05-11 15:00:58.954 +02:00 [DBG] Connection id "0HN3HN8PJEP6I" received FIN.
+2024-05-11 15:00:58.964 +02:00 [DBG] Connection id "0HN3HN8PJEP6J" disconnecting.
+2024-05-11 15:00:58.976 +02:00 [DBG] Connection id "0HN3HN8PJEP6I" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-05-11 15:00:58.992 +02:00 [DBG] Connection id "0HN3HN8PJEP6J" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-05-11 15:00:59.014 +02:00 [DBG] Connection id "0HN3HN8PJEP6I" disconnecting.
+2024-05-11 15:00:59.047 +02:00 [DBG] Connection id "0HN3HN8PJEP6J" stopped.
+2024-05-11 15:00:59.047 +02:00 [DBG] Connection id "0HN3HN8PJEP6I" stopped.
+2024-05-11 15:01:03.676 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5212/fingerprint/register - application/json 26
+2024-05-11 15:01:03.680 +02:00 [DBG] 1 candidate(s) found for the request path '/fingerprint/register'
+2024-05-11 15:01:03.682 +02:00 [DBG] Endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)' with route pattern 'Fingerprint/register' is valid for the request path '/fingerprint/register'
+2024-05-11 15:01:03.684 +02:00 [DBG] Request matched endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 15:01:03.685 +02:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-05-11 15:01:03.686 +02:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-05-11 15:01:03.688 +02:00 [INF] Executing endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 15:01:03.692 +02:00 [INF] Route matched with {action = "RegisterAndMergeFingerprints", controller = "Fingerprint"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterAndMergeFingerprints(FingerprintRequest) on controller FingerprintController (FingerprintMiddleware).
+2024-05-11 15:01:03.700 +02:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2024-05-11 15:01:03.702 +02:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-05-11 15:01:03.703 +02:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-05-11 15:01:03.705 +02:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-05-11 15:01:03.706 +02:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-05-11 15:01:03.712 +02:00 [DBG] Executing controller factory for controller FingerprintController (FingerprintMiddleware)
+2024-05-11 15:01:03.715 +02:00 [DBG] Executed controller factory for controller FingerprintController (FingerprintMiddleware)
+2024-05-11 15:01:03.717 +02:00 [DBG] Attempting to bind parameter 'request' of type 'FingerprintRequest' ...
+2024-05-11 15:01:03.718 +02:00 [DBG] Attempting to bind parameter 'request' of type 'FingerprintRequest' using the name '' in request data ...
+2024-05-11 15:01:03.720 +02:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-05-11 15:01:03.721 +02:00 [DBG] Connection id "0HN3HN8PJEP6H", Request id "0HN3HN8PJEP6H:00000003": started reading request body.
+2024-05-11 15:01:03.723 +02:00 [DBG] Connection id "0HN3HN8PJEP6H", Request id "0HN3HN8PJEP6H:00000003": done reading request body.
+2024-05-11 15:01:03.728 +02:00 [DBG] JSON input formatter succeeded, deserializing to type 'FingerprintRequest'
+2024-05-11 15:01:03.729 +02:00 [DBG] Done attempting to bind parameter 'request' of type 'FingerprintRequest'.
+2024-05-11 15:01:03.732 +02:00 [DBG] Done attempting to bind parameter 'request' of type 'FingerprintRequest'.
+2024-05-11 15:01:03.733 +02:00 [DBG] Attempting to validate the bound parameter 'request' of type 'FingerprintRequest' ...
+2024-05-11 15:01:03.735 +02:00 [DBG] Done attempting to validate the bound parameter 'request' of type 'FingerprintRequest'.
+2024-05-11 15:01:20.611 +02:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-05-11 15:01:20.635 +02:00 [DBG] No information found on request to perform content negotiation.
+2024-05-11 15:01:20.643 +02:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-05-11 15:01:20.656 +02:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-05-11 15:01:20.668 +02:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-05-11 15:01:20.682 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Byte[], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-05-11 15:01:20.702 +02:00 [INF] Executed action FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware) in 16989.9315ms
+2024-05-11 15:01:20.712 +02:00 [INF] Executed endpoint 'FingerprintController.RegisterAndMergeFingerprints (FingerprintMiddleware)'
+2024-05-11 15:01:20.725 +02:00 [DBG] Connection id "0HN3HN8PJEP6H" completed keep alive response.
+2024-05-11 15:01:20.737 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5212/fingerprint/register - 200 null application/json; charset=utf-8 17061.4406ms
+2024-05-11 15:03:31.735 +02:00 [DBG] Connection id "0HN3HN8PJEP6H" disconnecting.
+2024-05-11 15:03:31.747 +02:00 [DBG] Connection id "0HN3HN8PJEP6H" stopped.
+2024-05-11 15:03:31.761 +02:00 [DBG] Connection id "0HN3HN8PJEP6H" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-05-11 15:12:53.929 +02:00 [DBG] Connection id "0HN3HN8PJEP6K" received FIN.
+2024-05-11 15:12:53.935 +02:00 [DBG] Connection id "0HN3HN8PJEP6K" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-05-11 15:12:53.941 +02:00 [DBG] Socket connection closed prematurely.
+System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed the WebSocket connection without completing the close handshake.
+   at System.Net.WebSockets.ManagedWebSocket.ThrowEOFUnexpected()
+   at System.Net.WebSockets.ManagedWebSocket.EnsureBufferContainsAsync(Int32 minimumRequiredBytes, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.WebSockets.ManagedWebSocket.ReceiveAsyncPrivate[TResult](Memory`1 payloadBuffer, CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Microsoft.AspNetCore.Http.Connections.Internal.Transports.WebSocketsServerTransport.StartReceiving(WebSocket socket)
+2024-05-11 15:12:53.952 +02:00 [DBG] Connection id "0HN3HN8PJEP6K" disconnecting.
+2024-05-11 15:12:53.976 +02:00 [DBG] Waiting for the application to finish sending data.
+2024-05-11 15:12:53.989 +02:00 [DBG] Socket closed.
+2024-05-11 15:12:53.998 +02:00 [DBG] OnConnectedAsync ending.
+2024-05-11 15:12:54.004 +02:00 [DBG] Removing connection SS9TtkV7DNgJy5bhUxHMaw from the list of connections.
+2024-05-11 15:12:54.012 +02:00 [INF] Executed endpoint '/notificationhub'
+2024-05-11 15:12:54.018 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5212/notificationhub?id=SS9TtkV7DNgJy5bhUxHMaw - 101 null null 720812.4138ms
+2024-05-11 15:12:54.038 +02:00 [DBG] Connection id "0HN3HN8PJEP6K" stopped.
+2024-05-11 16:51:43.413 +02:00 [INF] Application is shutting down...
+2024-05-11 16:51:43.422 +02:00 [DBG] Hosting stopping
+2024-05-11 16:51:43.510 +02:00 [DBG] Hosting stopped

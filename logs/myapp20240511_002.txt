@@ -188,3 +188,6 @@ System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed t
 2024-05-11 15:12:54.012 +02:00 [INF] Executed endpoint '/notificationhub'
 2024-05-11 15:12:54.018 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5212/notificationhub?id=SS9TtkV7DNgJy5bhUxHMaw - 101 null null 720812.4138ms
 2024-05-11 15:12:54.038 +02:00 [DBG] Connection id "0HN3HN8PJEP6K" stopped.
+2024-05-11 16:51:43.413 +02:00 [INF] Application is shutting down...
+2024-05-11 16:51:43.422 +02:00 [DBG] Hosting stopping
+2024-05-11 16:51:43.510 +02:00 [DBG] Hosting stopped

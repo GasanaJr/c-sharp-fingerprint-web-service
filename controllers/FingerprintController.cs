@@ -66,13 +66,13 @@ public class FingerprintController : ControllerBase
         }
     }
 
-    
-    [HttpPost("fingerprint")]
+       [HttpPost("fingerprint")]
     public async Task<IActionResult> sendFingerPrint(byte[][] fingerprints)
     {
         int matchFingerScore = await _fingerprintService.sendFingerPrint(_fingerprintService.GetCurrentDeviceHandle(), fingerprints);
         return Ok(matchFingerScore);
     }
+
 
 
     [HttpGet("close")]
