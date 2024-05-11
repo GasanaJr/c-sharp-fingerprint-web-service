@@ -1,28 +1,30 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Name="Example Fingerprint Service" Version="1.0.0.0" Manufacturer="Didas Junior" UpgradeCode="01b8053b-3b23-4a44-a08e-eb60a9953b35">
-    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+  <Product Id="*" Name="Example Fingerprint Service" Version="1.0.0.0" Manufacturer="Didas Junior" UpgradeCode="01b8053b-3b23-4a44-a08e-eb60a9953b35" Language="1033">
+    <Package InstallerVersion="200" Compressed="yes" />
 
-    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-    <MediaTemplate />
+    <!-- Media element added here -->
+    <Media Id="1" Cabinet="product.cab" EmbedCab="yes"/>
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="INSTALLFOLDER" Name="FingerprintService">
-          <Component Id="ProductComponent">
-            <File Id="FingerprintServiceExe" Source="C:\Users\USER\FPSERVICE\FingerprintMiddleware.exe" KeyPath="yes" />
-            <ServiceInstall Id="ServiceInstaller" Type="ownProcess"
-                            Name="FingerprintService" DisplayName="Fingerprint Service"
-                            Description="Handles fingerprint authentication." Start="auto"
-                            Account="LocalSystem" ErrorControl="normal" Interactive="no">
-            </ServiceInstall>
-            <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="FingerprintService" Wait="yes" />
-          </Component>
-        </Directory>
+        <Directory Id="INSTALLFOLDER" Name="FingerprintService" />
       </Directory>
     </Directory>
 
     <Feature Id="ProductFeature" Title="FingerprintService" Level="1">
-      <ComponentRef Id="ProductComponent" />
+      <ComponentGroupRef Id="ProductComponents" />
     </Feature>
+
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="ProductComponent">
+        <File Id="FingerprintServiceExe" Source="C:\Users\USER\FPSERVICE\FingerprintMiddleware.exe" KeyPath="yes" />
+        <ServiceInstall Id="ServiceInstaller" Type="ownProcess"
+                        Name="FingerprintService" DisplayName="Fingerprint Service"
+                        Description="Handles fingerprint authentication." Start="auto"
+                        Account="LocalSystem" ErrorControl="ignore" Interactive="no">
+        </ServiceInstall>
+        <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="FingerprintService" Wait="yes" />
+      </Component>
+    </ComponentGroup>
   </Product>
 </Wix>
